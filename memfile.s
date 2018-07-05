@@ -1,8 +1,8 @@
 INICIA
-		AND		R5, R5, #0      ;Zerando os registradores a serem usados
-		AND		R7, R7, #0
-		AND		R0, R0, #0
-		AND		R4, R4, #0
+		XOR		R5, R5      ;Zerando os registradores a serem usados
+		XOR		R7, R7
+		XOR		R0, R0
+		XOR		R4, R4
 		ADD     	R5, R5, #2      ;Adiciona o numero base da PG (2) em R5
 		ADD		R7, R7, R5	;R7 = registrador da dupla
 		ADD		R0, R0, #200
@@ -14,9 +14,9 @@ INICIA
 		STR		R7, [R0]     	;Salva o primeiro valor da PG
 		
 LOOP
-		TST		R7, #2147483648 ;verifica se o valor da PG È maior que 2^31
+		TST		R7, #2147483648 ;verifica se o valor da PG √© maior que 2^31
 		BNE		FIM             ;se for, finaliza o codigo
-		LSL		R7, R7, #1  	;sen„o, multiplica por 2
+		LSL		R7, R7, #1  	;sen√£o, multiplica por 2
 		ADD		R4, R4, #1	    ;incrementa o contador
 		ADD		R0, R0, #4  	;incrementa endereco de memoria
 		STR		R7, [R0]        ;salva valor na memoria
